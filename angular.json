@@ -66,6 +66,7 @@
               "browserTarget": "ToDoist_Angular:build:development"
             }
           },
+          "options": {"port": 4200},
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
