@@ -1,0 +1,60 @@
+@import "primeng/resources/primeng.css";
+@import '~primeng/resources/primeng.min.css';
+
+/* General Form Styling */
+.no-border-input {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+#task-primary-options, .task-primary-options {
+  border-top: 1px solid #e9ecef;
+}
+
+.p-input-button-james {
+  border-radius: 5px;
+}
+
+.user-title-input {
+  font-weight: bold;
+  color: #454545;
+}
+
+.user-description-input {
+  font-style: italic;
+  color: #454545;
+}
+
+input#title, textarea#description {
+  border: 1px solid transparent;
+  border-style: hidden !important;
+  border-image: none;
+  box-shadow: none !important;
+  outline: none;
+}
+
+/* Form 'Flex' styling */
+#target {
+  display: flex;
+}
+
+#target > div {
+  flex: 1;
+}
+
+
+
+
+/* Form Needs User Attention */
+  .needs-user-attention, input.ng-invalid.ng-dirty {
+    border: 2px solid #ffa500 !important;
+    box-shadow: 0 0 0 0.1rem  #fdb42cb1;
+  }
+
+  @import '~primeng/resources/primeng.min.css';
+
+  // .custom-prime-padding {
+  //   @extend .p-4;
+  //   @extend .pb-0;
+  //   @extend .pt-0;
+  // }

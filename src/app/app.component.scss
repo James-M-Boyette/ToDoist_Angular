@@ -1,0 +1,10 @@
+:host ::ng-deep .p-fluid {
+    max-width: 600px; /* set a maximum width for the form */
+  }
+  
+  @media (max-width: 768px) {
+    :host ::ng-deep .p-fluid {
+      max-width: 90%; /* reduce the width for smaller screens */
+    }
+  }
+  

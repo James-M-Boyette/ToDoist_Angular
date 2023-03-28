@@ -25,8 +25,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            },            
             "scripts": []
           },
           "configurations": {
@@ -66,7 +71,7 @@
               "browserTarget": "ToDoist_Angular:build:development"
             }
           },
-          "options": {"port": 4200},
+          "options": {"port": 8800},
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
