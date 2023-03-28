@@ -1,60 +1,100 @@
 @import "primeng/resources/primeng.css";
 @import '~primeng/resources/primeng.min.css';
 
-/* General Form Styling */
-.no-border-input {
+/* 
+  General Form Styling 
+*/
+
+// 'ToDoist'-style formatting
+.borderless-input {
   border-color: transparent;
   box-shadow: none;
+  outline: none
 }
 
-#task-primary-options, .task-primary-options {
+// Divider for second and third sections
+#primary-task-options, .primary-task-options {
   border-top: 1px solid #e9ecef;
 }
 
-.p-input-button-james {
+// My Tweaks
+.button-restyle {
   border-radius: 5px;
 }
 
+// Special styling when the user is making inputs
 .user-title-input {
   font-weight: bold;
   color: #454545;
 }
 
 .user-description-input {
-  font-style: italic;
   color: #454545;
 }
 
-input#title, textarea#description {
-  border: 1px solid transparent;
+// Disable PrimeNG borders, box-shadows, and outlining for 'input' fields
+input#title, textarea#description, #user-projects {
   border-style: hidden !important;
-  border-image: none;
   box-shadow: none !important;
-  outline: none;
+  outline: none; // key for disabling
 }
 
-/* Form 'Flex' styling */
-#target {
-  display: flex;
+/* 
+  Task 'Description' field styling 
+*/
+#task-description label {
+  font-size: small; 
+  // margin-left: 6px; 
+  margin-top: 2px; 
+  opacity: 1; 
+  transition: opacity 0.7s ease-in-out;
 }
 
-#target > div {
-  flex: 1;
+// Styling for label once user begins typing
+#task-description textarea#description:focus + label {
+  opacity: 0.25;
+}
+
+// Styling for label after user has dirtied the field
+#task-description label.description-touched {
+  opacity: 0.1 !important;
+  color: red !important;
+}
+
+button#add-task:disabled {
+  cursor: not-allowed;
+}
+
+/* 
+  Form 'Flex' styling 
+*/
+// TODO: delete these?
+// #target {
+//   display: flex;
+// }
+
+// #target > div {
+//   flex: 1;
+// }
+
+
+
+
+
+
+/* 
+  User Notification that form Needs Attention 
+*/
+.needs-user-attention, input.ng-invalid.ng-dirty {
+  border: 2px solid #ffa500 !important;
+  box-shadow: 0 0 0 0.1rem  #fdb42cb1;
 }
 
 
-
-
-/* Form Needs User Attention */
-  .needs-user-attention, input.ng-invalid.ng-dirty {
-    border: 2px solid #ffa500 !important;
-    box-shadow: 0 0 0 0.1rem  #fdb42cb1;
-  }
-
-  @import '~primeng/resources/primeng.min.css';
-
-  // .custom-prime-padding {
-  //   @extend .p-4;
-  //   @extend .pb-0;
-  //   @extend .pt-0;
-  // }
+/* (Me) Exploration of consolidating styling via Sass */
+// @import '~primeng/resources/primeng.min.css';
+// .custom-prime-padding {
+//   @extend .p-4;
+//   @extend .pb-0;
+//   @extend .pt-0;
+// }

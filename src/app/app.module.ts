@@ -7,12 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // PrimeNG Imports
 import { StyleClassModule } from 'primeng/styleclass';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
-import { DialogService } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 import { AnimateModule } from 'primeng/animate';
 import { ImageModule } from 'primeng/image';
@@ -31,19 +31,20 @@ import { TaskEntryComponent } from './task-entry/task-entry.component';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    DialogModule,
+    BrowserAnimationsModule,
+    StyleClassModule,
     InputTextModule,
+    InputTextareaModule,
+    ButtonModule,
     CheckboxModule,
     RadioButtonModule,
-    ButtonModule,
-    StyleClassModule,
-    AnimateModule,
-    ImageModule,
     DropdownModule,
     CalendarModule,
+    DialogModule,
+    AnimateModule,
+    ImageModule,
     CardModule
   ],
   providers: [],

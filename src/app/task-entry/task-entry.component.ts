@@ -9,10 +9,7 @@ import { Task } from './task.model';
   styleUrls: ['./task-entry.component.scss']
 })
 export class TaskEntryComponent implements OnInit {
-  fruits = ['apple', 'banana', 'orange'];
   taskForm!: FormGroup;
-
-  // titleCount: number
  
   getTitleCount(): number {
     return this.taskForm.get('title')?.value?.length
@@ -23,15 +20,21 @@ export class TaskEntryComponent implements OnInit {
 
   // Placeholders for the form
   titlePlaceholder = 'Enter task title';
-  descriptionPlaceholder = 'Enter task title';
-  taskDueDatePlaceholder = 'Enter task title';
+  descriptionPlaceholder = 'Enter task description ...';
+  
+  // User's projects
   userProjects = [
     { projectName: 'Work' },
     { projectName: 'Chores' },
     { projectName: 'Hobby Time' },
   ];
-  
 
+  // Description touched
+  descriptionTouched = false;
+  setDescriptionTouched() {
+    this.descriptionTouched = true;
+  }
+  
   constructor() {
   }
 
