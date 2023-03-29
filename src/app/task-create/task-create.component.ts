@@ -4,11 +4,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Task } from './task.model';
 
 @Component({
-  selector: 'app-task-entry',
-  templateUrl: './task-entry.component.html',
-  styleUrls: ['./task-entry.component.scss']
+  selector: 'app-task-create',
+  templateUrl: './task-create.component.html',
+  styleUrls: ['./task-create.component.scss']
 })
-export class TaskEntryComponent implements OnInit {
+export class TaskCreateComponent implements OnInit {
   taskForm!: FormGroup;
  
   getTitleCount(): number {
