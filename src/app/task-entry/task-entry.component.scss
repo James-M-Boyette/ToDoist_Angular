@@ -2,6 +2,20 @@
 @import '~primeng/resources/primeng.min.css';
 
 /* 
+   Variables
+ */
+
+:host {
+  --primary-blue: #1c9afb;
+  --primary-blue-hover: #097cd4;
+  --secondary: #e0e0e0;
+  --secondary-hover: #cdcdcd;
+  --medium-gray: #9c9c9c;
+  --dark-gray: #6e6e6e;
+  --user-input-gray: #454545;
+}
+
+/* 
   General Form Styling 
 */
 
@@ -14,7 +28,7 @@
 
 // Divider for second and third sections
 #primary-task-options, .primary-task-options {
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid var(--secondary);
 }
 
 // My Tweaks
@@ -23,45 +37,15 @@
 }
 
 /* 
-  'Secondary Options' button styling 
+  'Primary Inputs' styling 
 */
-:host ::ng-deep p-button button#cancel-add-task {
-  font-size: 12px !important;
-  padding: 0.01rem 0.01rem !important;
-  color:red;
-}
-/* 
-  'Secondary Options' button styling 
-*/
-:host ::ng-deep p-button.secondary-options-button span.p-button-label {
-  font-size: 12px !important;
-  padding: 0.01rem 0.01rem !important;
-  color:#4545454f;
-}
-:host ::ng-deep p-button.secondary-options-button button {
-  font-size: 12px !important;
-  padding: .3rem .3rem !important;
-  border: 1px solid #4545454f !important;
-  border-radius: 5px;
-  outline: none;
-}
-:host ::ng-deep p-button.secondary-options-button button span.p-button-label{
-  margin-right: .2rem
-}
-:host ::ng-deep p-button.secondary-options-button button span.pi{
-  color: #4545454f;
-  margin-left: .2rem
-}
-
-
-// Special styling when the user is making inputs
 .user-title-input {
   font-weight: bold;
-  color: #454545;
+  color: var(--user-input-gray);
 }
 
 .user-description-input {
-  color: #454545;
+  color: var(--user-input-gray);
 }
 
 // Disable PrimeNG borders, box-shadows, and outlining for 'input' fields
@@ -71,22 +55,23 @@ input#title, textarea#description, #user-projects, :host ::ng-deep p-dropdown .p
   outline: none; // key for disabling
 }
 
-// :host ::ng-deep p-dropdown .p-dropdown {
-// // :host ::ng-deep p-dropdown .p-dropdown .p-element {
-//   border-style: hidden !important;
-//   box-shadow: none !important;
-//   outline: none; // key for disabling
-// }
-
 /* 
   Task 'Description' field styling 
 */
+
+// The 'Description' field
+#task-description textarea {
+  font-size: 14px;
+}
+
+// The label for the 'Description' field
 #task-description label {
   font-size: small; 
   // margin-left: 6px; 
   margin-top: 2px; 
   opacity: .75; 
   transition: opacity 0.7s ease-in-out;
+  // color: red;
 }
 
 // Styling for label once user begins typing
@@ -96,30 +81,94 @@ input#title, textarea#description, #user-projects, :host ::ng-deep p-dropdown .p
 
 // Styling for label after user has dirtied the field
 #task-description label.description-touched {
-  opacity: 0.1 !important;
-  color: red !important;
+  opacity: 0.2 !important;
 }
 
-button#add-task:disabled {
-  cursor: not-allowed;
-}
 
 /* 
-  Form 'Flex' styling 
+  'Primary Options' button styling 
 */
-// TODO: delete these?
-// #target {
-//   display: flex;
-// }
 
-// #target > div {
-//   flex: 1;
-// }
+// 'Projects' dropdown container
+:host ::ng-deep  #projects-dropdown p-dropdown#user-projects .p-dropdown:hover {
+  background-color: transparent; 
+  border-radius: 7px;
+}
+
+// 'Projects' dropdown
+:host ::ng-deep  #projects-dropdown:hover {
+  background-color: var(--secondary);
+  border-radius: 7px;
+  & span.p-dropdown-label {
+    color: var(--user-input-gray);
+  }
+}
+
+// 'Cancel' Button
+#cancel-add-task {
+  background: var(--secondary);
+  border: 1px solid transparent;
+  color: var(--dark-gray);
+  &:hover {
+    background: var(--secondary-hover);
+    color: var(--user-input-gray);
+  }
+}
+
+// 'Add Task' Button
+button#add-task {
+  background: var(--primary-blue);
+  border: var(--primary-blue);
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &:not([disabled]):hover {
+    background: var(--primary-blue-hover);
+  };
+}
 
 
+/* 
+  'Secondary Options' button styling 
+*/
 
+// Button Container
+:host ::ng-deep #secondary-task-options p-button:hover  {
+  background: var(secondary-hover);
+  border: 1px solid transparent !important;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: -2px;
+  // Apply darker color to icon when hovering over button
+  &:hover span.pi {
+    color: var(--user-input-gray);
+  }
+}
+// Button
+:host ::ng-deep #secondary-task-options p-button button {
+  font-size: 12px !important;
+  padding: .3rem .3rem !important;
+  border: 1px solid var(--medium-gray);
+  border-radius: 5px;
+  outline: none;
+  &:hover {
+    background: var(--secondary);
+    border: 1px solid var(--dark-gray);
+  }
+}
 
-
+// Button Text
+:host ::ng-deep p-button.secondary-options-button button span.p-button-label{
+  font-size: 12px !important;
+  color: var(--medium-gray);
+  padding: 0.01rem 0.01rem !important;
+  margin-right: .2rem;
+}
+// Button Icon
+:host ::ng-deep p-button.secondary-options-button button span.pi{
+  color: var(--dark-gray);
+  margin-left: .2rem;
+}
 
 /* 
   User Notification that form Needs Attention 
@@ -128,12 +177,3 @@ button#add-task:disabled {
   border: 2px solid #ffa500 !important;
   box-shadow: 0 0 0 0.1rem  #fdb42cb1;
 }
-
-
-/* (Me) Exploration of consolidating styling via Sass */
-// @import '~primeng/resources/primeng.min.css';
-// .custom-prime-padding {
-//   @extend .p-4;
-//   @extend .pb-0;
-//   @extend .pt-0;
-// }

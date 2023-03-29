@@ -32,13 +32,13 @@
         [ngClass]="{
           'user-description-input': taskForm.get('description')?.value?.length > 0, 
           'needs-user-attention': !taskForm.get('description')?.valid && taskForm.get('description')?.touched}"
+        (blur)="setDescriptionTouched()"
         >
-        (focusout)="setDescriptionTouched()"
-        </textarea>
-        <label for="description"
-        [ngClass]="{
-          'description-touched': descriptionTouched
-        }"
+      </textarea>
+      <label for="description"
+      [ngClass]="{
+        'description-touched': descriptionTouched
+      }"
         >Description ...</label>
       </span>
     </div>
@@ -67,7 +67,7 @@
   flex-wrap
   m-0
   ">
-    <div class="flex align-items-center justify-content-start">
+    <div id='projects-dropdown' class="flex align-items-center justify-content-start">
       <p-dropdown 
       id="user-projects" 
       formControlName="userProjects" 

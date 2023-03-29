@@ -29,6 +29,7 @@ export class TaskEntryComponent implements OnInit {
   descriptionTouched = false;
   setDescriptionTouched() {
     this.descriptionTouched = true;
+    console.log('touched? ', this.descriptionTouched);
   }
   
   constructor() {
