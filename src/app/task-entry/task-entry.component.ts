@@ -17,10 +17,6 @@ export class TaskEntryComponent implements OnInit {
   getDescriptionCount(): number {
     return this.taskForm.get('description')?.value?.length
   }
-
-  // Placeholders for the form
-  titlePlaceholder = 'Enter task title';
-  descriptionPlaceholder = 'Enter task description ...';
   
   // User's projects
   userProjects = [

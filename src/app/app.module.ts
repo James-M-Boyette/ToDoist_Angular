@@ -17,6 +17,7 @@ import { DialogModule } from 'primeng/dialog';
 import { AnimateModule } from 'primeng/animate';
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
+import { RippleModule } from 'primeng/ripple';
 
 // App Imports
 import { AppComponent } from './app.component';
@@ -45,7 +46,8 @@ import { TaskEntryComponent } from './task-entry/task-entry.component';
     DialogModule,
     AnimateModule,
     ImageModule,
-    CardModule
+    CardModule,
+    RippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

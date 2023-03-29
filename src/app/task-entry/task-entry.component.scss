@@ -22,6 +22,38 @@
   border-radius: 5px;
 }
 
+/* 
+  'Secondary Options' button styling 
+*/
+:host ::ng-deep p-button button#cancel-add-task {
+  font-size: 12px !important;
+  padding: 0.01rem 0.01rem !important;
+  color:red;
+}
+/* 
+  'Secondary Options' button styling 
+*/
+:host ::ng-deep p-button.secondary-options-button span.p-button-label {
+  font-size: 12px !important;
+  padding: 0.01rem 0.01rem !important;
+  color:#4545454f;
+}
+:host ::ng-deep p-button.secondary-options-button button {
+  font-size: 12px !important;
+  padding: .3rem .3rem !important;
+  border: 1px solid #4545454f !important;
+  border-radius: 5px;
+  outline: none;
+}
+:host ::ng-deep p-button.secondary-options-button button span.p-button-label{
+  margin-right: .2rem
+}
+:host ::ng-deep p-button.secondary-options-button button span.pi{
+  color: #4545454f;
+  margin-left: .2rem
+}
+
+
 // Special styling when the user is making inputs
 .user-title-input {
   font-weight: bold;
@@ -33,11 +65,18 @@
 }
 
 // Disable PrimeNG borders, box-shadows, and outlining for 'input' fields
-input#title, textarea#description, #user-projects {
+input#title, textarea#description, #user-projects, :host ::ng-deep p-dropdown .p-dropdown{
   border-style: hidden !important;
   box-shadow: none !important;
   outline: none; // key for disabling
 }
+
+// :host ::ng-deep p-dropdown .p-dropdown {
+// // :host ::ng-deep p-dropdown .p-dropdown .p-element {
+//   border-style: hidden !important;
+//   box-shadow: none !important;
+//   outline: none; // key for disabling
+// }
 
 /* 
   Task 'Description' field styling 
@@ -46,7 +85,7 @@ input#title, textarea#description, #user-projects {
   font-size: small; 
   // margin-left: 6px; 
   margin-top: 2px; 
-  opacity: 1; 
+  opacity: .75; 
   transition: opacity 0.7s ease-in-out;
 }
 
