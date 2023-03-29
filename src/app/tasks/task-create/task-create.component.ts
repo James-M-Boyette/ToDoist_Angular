@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Task } from './task.model';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-task-create',

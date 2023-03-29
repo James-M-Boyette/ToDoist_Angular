@@ -18,16 +18,23 @@ import { AnimateModule } from 'primeng/animate';
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
 import { RippleModule } from 'primeng/ripple';
+import { DividerModule } from 'primeng/divider';
+import { DataViewModule } from 'primeng/dataview';
 
 // App Imports
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TaskEntryComponent } from './task-entry/task-entry.component';
+import { TaskCreateComponent } from './tasks/task-create/task-create.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { TaskService } from './tasks/services/task.service';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskEntryComponent
+    TaskCreateComponent,
+    TaskListComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +54,11 @@ import { TaskEntryComponent } from './task-entry/task-entry.component';
     AnimateModule,
     ImageModule,
     CardModule,
-    RippleModule
+    RippleModule,
+    DividerModule,
+    DataViewModule, 
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
