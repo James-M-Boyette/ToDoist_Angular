@@ -24,10 +24,11 @@ import { DataViewModule } from 'primeng/dataview';
 // App Imports
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TaskCreateComponent } from './tasks/task-create/task-create.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
-import { TaskService } from './tasks/services/task.service';
 import { TasksComponent } from './tasks/tasks.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { TaskAddComponent } from './tasks/task-add/task-add.component';
+import { TaskCreateComponent } from './tasks/task-create/task-create.component';
+import { TaskService } from './tasks/services/task.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TasksComponent } from './tasks/tasks.component';
     TaskCreateComponent,
     TaskListComponent,
     TasksComponent,
+    TaskAddComponent,
   ],
   imports: [
     BrowserModule,

@@ -53,6 +53,11 @@ export class TaskCreateComponent implements OnInit {
     const title = this.taskForm.get('title')?.value;
     return !title || !title.trim();
   }
+
+  onCancel() {
+    // this.showCreateComponent = false;
+  }
+  
   
 
   onSubmit(): void {

@@ -1,83 +1,123 @@
-<div id='form-wrapper' class="surface-card shadow-2 border-round w-full lg:w-6" style="margin:auto !important">
+<div
+  id="form-wrapper"
+  class="surface-card shadow-2 border-round w-full lg:w-6"
+  style="margin: auto !important"
+>
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="">
     <!-- ** Primary 'Task' Inputs: Task 'title' and 'description' -->
     <div id="primary-task-inputs">
       <!-- Task Title -->
-        <input 
-        type="text" 
-        id="title" 
+      <input
+        type="text"
+        id="title"
         pInputText
         [placeholder]="'Task name'"
         formControlName="title"
         class="mb-3 w-full flex p-4 pb-0 borderless-input"
         [ngClass]="{
-          'user-title-input': taskForm.get('title')?.value?.length > 0, 
-          'needs-user-attention': !taskForm.get('title')?.valid && taskForm.get('title')?.touched}"
-        >
+          'user-title-input': taskForm.get('title')?.value?.length > 0,
+          'needs-user-attention':
+            !taskForm.get('title')?.valid && taskForm.get('title')?.touched
+        }"
+      />
       <!-- Task Name Character Limit: x/500 -->
-      <span *ngIf="taskForm.get('title')?.dirty && getTitleCount() > 500" class="block text-900 font-medium mb-2">
+      <span
+        *ngIf="taskForm.get('title')?.dirty && getTitleCount() > 500"
+        class="block text-900 font-medium mb-2"
+      >
         Task Name Character Limit: {{ getTitleCount() }}/500
       </span>
 
       <!-- Task Description -->
-      <div id="task-description" class="flex p-4 pb-0 pt-0" >
+      <div id="task-description" class="flex p-4 pb-0 pt-0">
         <span class="p-float-label">
-          <textarea 
-          id="description" 
-          rows="1" 
-          cols="30" 
-          pInputTextarea
-          [autoResize]="true"
-          formControlName="description"
-          class="mb-3 w-full borderless-input user-description-input"
-          [ngClass]="{
-            'user-description-input': taskForm.get('description')?.value?.length > 0, 
-            'needs-user-attention': !taskForm.get('description')?.valid && taskForm.get('description')?.touched}"
-          (blur)="setDescriptionTouched()"
+          <textarea
+            id="description"
+            rows="1"
+            cols="30"
+            pInputTextarea
+            [autoResize]="true"
+            formControlName="description"
+            class="mb-3 w-full borderless-input user-description-input"
+            [ngClass]="{
+              'user-description-input':
+                taskForm.get('description')?.value?.length > 0,
+              'needs-user-attention':
+                !taskForm.get('description')?.valid &&
+                taskForm.get('description')?.touched
+            }"
+            (blur)="setDescriptionTouched()"
           >
-        </textarea>
-        <label for="description"
-        [ngClass]="{
-          'description-touched': descriptionTouched
-        }"
-          >Description ...</label>
+          </textarea>
+          <label
+            for="description"
+            [ngClass]="{
+              'description-touched': descriptionTouched
+            }"
+            >Description ...</label
+          >
         </span>
       </div>
       <!-- Task Name Character Limit: x/16,384 -->
-      <span *ngIf="taskForm.get('description')?.dirty && getDescriptionCount() > 16384" class="block text-900 font-medium mb-2">
+      <span
+        *ngIf="
+          taskForm.get('description')?.dirty && getDescriptionCount() > 16384
+        "
+        class="block text-900 font-medium mb-2"
+      >
         Task Name Character Limit: {{ getDescriptionCount() }}/16384
       </span>
     </div>
-    
+
     <!-- ** Secondary 'Task' Options: Due Date, Priority, Reminders, Labels, Additional Options -->
-    <div id='secondary-task-options' class="p-4 flex align-content-center justify-content-start flex-wrap pt-2 pb-2">
-      <p-button label="Due date" icon="pi pi-calendar-plus" styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary " class="secondary-options-button "></p-button>
-      <p-button label="Priority" icon="pi pi-flag" styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary" class="secondary-options-button"></p-button>
-      <p-button label="Reminders" icon="pi pi-clock" styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary" class="secondary-options-button"></p-button>
-      <p-button label="Labels" icon="pi pi-tag" styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary" class="secondary-options-button"></p-button>
-    </div> 
+    <div
+      id="secondary-task-options"
+      class="p-4 flex align-content-center justify-content-start flex-wrap pt-2 pb-2"
+    >
+      <p-button
+        label="Due date"
+        icon="pi pi-calendar-plus"
+        styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary "
+        class="secondary-options-button"
+      ></p-button>
+      <p-button
+        label="Priority"
+        icon="pi pi-flag"
+        styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary"
+        class="secondary-options-button"
+      ></p-button>
+      <p-button
+        label="Reminders"
+        icon="pi pi-clock"
+        styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary"
+        class="secondary-options-button"
+      ></p-button>
+      <p-button
+        label="Labels"
+        icon="pi pi-tag"
+        styleClass="p-button-sm p-button-raised p-button-outlined p-button-secondary"
+        class="secondary-options-button"
+      ></p-button>
+    </div>
 
     <!-- ** Primary 'Task' Options: Assign to a Project, Cancel, Add Task -->
-    <div id='primary-task-options' class="
-    p-4 
-    pt-2
-    pb-2
-    flex 
-    align-content-center 
-    justify-content-between
-    flex-wrap
-    m-0
-    ">
-      <div id='projects-dropdown' class="flex align-items-center justify-content-start">
-        <p-dropdown 
-        id="user-projects" 
-        formControlName="userProjects" 
-        [options]="userProjects" 
-        optionLabel="projectName"
-        class="p-dropdown-borderless"
+    <div
+      id="primary-task-options"
+      class="p-4 pt-2 pb-2 flex align-content-center justify-content-between flex-wrap m-0"
+    >
+      <div
+        id="projects-dropdown"
+        class="flex align-items-center justify-content-start"
+      >
+        <p-dropdown
+          id="user-projects"
+          formControlName="userProjects"
+          [options]="userProjects"
+          optionLabel="projectName"
+          class="p-dropdown-borderless"
         ></p-dropdown>
       </div>
-      <div class="flex align-items-center justify-content-end" >
+      <div class="flex align-items-center justify-content-end">
         <!-- 
           This button uses PrimeNG's 'p-button' element, which requires that you use 'styleClass' instead of 'class' (and PrimeNG-specific CSS classes).
         -->
@@ -92,25 +132,26 @@
         <!-- 
           This is a regular button, which responds to regular CSS styling ...
         -->
-        <button 
-        id="cancel-add-task"
-        type="button"
-        pButton 
-        pRipple
-        pButtonRaised
-        label="Cancel"
-        class="ml-2 p-button p-button-sm p-button-ripple p-button-raised p-button-secondary button-restyle"
-        ></button> 
-        <button 
-        id="add-task"
-        type="submit"
-        pButton 
-        pRipple
-        pButtonRaised
-        label="Add Task"
-        class="ml-2 p-button p-button-sm p-button-ripple p-button-raised button-restyle"
-        [disabled]="isTitleEmptyOrWhitespace"
-        ></button> 
+        <button
+          id="cancel-add-task"
+          type="button"
+          pButton
+          pRipple
+          pButtonRaised
+          label="Cancel"
+          class="ml-2 p-button p-button-sm p-button-ripple p-button-raised p-button-secondary button-restyle"
+          (click)="onCancel()"
+        ></button>
+        <button
+          id="add-task"
+          type="submit"
+          pButton
+          pRipple
+          pButtonRaised
+          label="Add Task"
+          class="ml-2 p-button p-button-sm p-button-ripple p-button-raised button-restyle"
+          [disabled]="isTitleEmptyOrWhitespace"
+        ></button>
       </div>
     </div>
   </form>

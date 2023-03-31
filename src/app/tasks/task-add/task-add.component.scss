@@ -1,0 +1,75 @@
+:host {
+  --task-font: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --primary-blue: #1c9afb;
+  --primary-blue-hover: #097cd4;
+  --secondary: #e0e0e0;
+  --secondary-hover: #cdcdcd;
+  --medium-gray: #9c9c9c;
+  --dark-gray: #6e6e6e;
+  --user-input-gray: #454545;
+}
+
+:host ::ng-deep .checkbox-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+:host ::ng-deep .p-checkbox-rounded .p-checkbox-box {
+  border-radius: 50%;
+}
+
+#task-add {
+  font-family: var(--task-font);
+}
+
+/* 
+  .p-checkbox-icon
+  .p-checkbox
+  .p-checkbox-box
+  span.p-checkbox-icon
+*/
+
+// Make the initial checkbox a blue 'plus' icon
+:host ::ng-deep .p-checkbox .p-checkbox-icon:before {
+  color: var(--primary-blue);
+  font-family: "PrimeIcons";
+  font-size: 2rem;
+  font-weight: bold;
+  content: "\e902";
+  content: "\2b";
+  padding-right: .05rem;
+  position: relative;
+  top: -1px;
+}
+
+// Initially, make the checkbox
+:host ::ng-deep .p-checkbox .p-checkbox-box {
+  border: none;
+  background-color: transparent;
+}
+
+// On hover, make the background blue
+:host ::ng-deep .p-checkbox:hover .p-checkbox-box {
+  background-color: var(--primary-blue-hover);
+}
+
+// On hover, show a white `pi-plus` icon
+:host ::ng-deep .p-checkbox:hover .p-checkbox-icon::before {
+  content: '';
+  // display: block;
+  font-family: "PrimeIcons";
+  font-size: 2rem;
+  font-weight: bold;
+  // line-height: 1;
+  // color: var(--primary-blue);
+  color: var(--secondary-hover) !important;
+  content: "\2b";
+}
+
+:host ::ng-deep .p-checkbox-focused .p-checkbox-box .p-checkbox-icon:before {
+  top: .125em !important;
+}
+:host ::ng-deep .p-checkbox-checked .p-checkbox-box .p-checkbox-icon:before {
+  top: -.125em !important;
+}
