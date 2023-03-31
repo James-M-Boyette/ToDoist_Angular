@@ -1,5 +1,6 @@
 :host {
-  --task-font: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+  --task-font: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --primary-blue: #1c9afb;
 }
 
 label {
@@ -18,26 +19,19 @@ span.p-checkbox-icon:before {
   font-family: var(--task-font);
   margin: 0px;
 }
-  
-  .p-checkbox-rounded .p-checkbox-box:before,
-.p-checkbox-rounded .p-checkbox-box:after {
-  border-radius: 50%;
-  width: 1.5em;
-  height: 1.5em;
-  margin: 0.25em;
-  box-sizing: border-box;
-  border: 2px solid var(--text-color);
-}
-
-.p-checkbox-rounded .p-checkbox-box:before {
-  content: '';
-}
-
-.p-checkbox-rounded .p-checkbox-box:after {
-  content: '';
-  background-color: var(--text-color);
-}
 
 :host ::ng-deep .p-checkbox-rounded .p-checkbox-box {
   border-radius: 50%;
+}
+:host ::ng-deep .p-checkbox:hover .p-checkbox-icon::before {
+  content: '';
+  display: block;
+  font-family: "PrimeIcons";
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--primary-blue);
+  content: "\2713";
+}
+:host ::ng-deep .p-checkbox-box.p-highlight .p-checkbox-icon::before {
+  color: white;
 }
