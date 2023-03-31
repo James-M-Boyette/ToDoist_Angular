@@ -5,13 +5,13 @@
     </div>
   </div>
   <div class="flex">
-    <div class="flex-auto">
-      <app-task-add>The Task Add Component Loads here ...</app-task-add>
+    <div class="flex-auto" *ngIf="taskAddVisible">
+      <app-task-add  (click)="toggleTaskAddVisibility()">The Task Add Component Loads here ...</app-task-add>
     </div>
   </div>
   <div class="flex">
-    <div class="flex-auto">
-      <app-task-create>The Task Entry Component Loads here ...</app-task-create>
+    <div class="flex-auto" *ngIf="taskCreateVisible">
+      <app-task-create (cancel)="onCancel()">The Task Entry Component Loads here ...</app-task-create>
     </div>
   </div>
 </div>
@@ -37,3 +37,6 @@
     </div>
   </div>
 </div> -->
+
+<!-- <task-add (click)="toggleTaskAddVisibility()"></task-add>
+<task-create *ngIf="taskCreateVisible"></task-create> -->

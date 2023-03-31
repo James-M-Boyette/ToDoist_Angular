@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Task } from '../models/task.model';
@@ -54,8 +54,11 @@ export class TaskCreateComponent implements OnInit {
     return !title || !title.trim();
   }
 
+  @Output() cancel = new EventEmitter<void>();
+
   onCancel() {
-    // this.showCreateComponent = false;
+    console.log(`CANCEL clicked!`);
+    this.cancel.emit();
   }
   
   

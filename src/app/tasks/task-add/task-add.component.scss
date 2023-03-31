@@ -23,7 +23,7 @@
   font-family: var(--task-font);
 }
 
-/* 
+/* Heirarchy of classes from parent to child elements
   .p-checkbox-icon
   .p-checkbox
   .p-checkbox-box
@@ -57,19 +57,19 @@
 // On hover, show a white `pi-plus` icon
 :host ::ng-deep .p-checkbox:hover .p-checkbox-icon::before {
   content: '';
-  // display: block;
   font-family: "PrimeIcons";
   font-size: 2rem;
   font-weight: bold;
-  // line-height: 1;
-  // color: var(--primary-blue);
-  color: var(--secondary-hover) !important;
+  color: #fff;
   content: "\2b";
 }
 
-:host ::ng-deep .p-checkbox-focused .p-checkbox-box .p-checkbox-icon:before {
-  top: .125em !important;
+// Fixes 'animation' on hover, which I never want
+:host ::ng-deep .p-checkbox-checked.p-checkbox-focused .p-checkbox-box .p-checkbox-icon:before {
+  top: -.125em !important;
 }
-:host ::ng-deep .p-checkbox-checked .p-checkbox-box .p-checkbox-icon:before {
+ 
+// Stops 'animation' of cross moving down on click - could change if you want more user feedback on click
+:host ::ng-deep .p-checkbox-checked .p-checkbox-box.p-highlight .p-checkbox-icon:before {
   top: -.125em !important;
 }
