@@ -1,16 +1,61 @@
-<!-- <ul>
-    <li *ngFor="let task of tasks">
-      <h2>{{ task.title }}</h2>
-      <p>{{ task.description }}</p>
-      <p>Due Date: {{ task.dueDate | date }}</p>
-      <p-divider></p-divider>
-    </li>
-  </ul> -->
 
-    <div *ngFor="let task of tasks">
-      <h2>{{ task.title }}</h2>
-      <p>{{ task.description }}</p>
-      <p>Due Date: {{ task.dueDate | date }}</p>
-      <p-divider></p-divider>
+<div id='form-wrapper' class="surface-card w-full lg:w-6" style="margin:auto !important">
+  <form [formGroup]="taskForm">
+    <div class="p-grid p-nogutter">
+      <div class="p-col">
+        <div *ngFor="let task of tasks" class="pt-2">
+          <div class="card">
+            <div class="p-grid">
+              <div class="p-col">
+                <div id='task-title' class="p-row p-checkbox-circle pb-3 align-items-center">
+                  <p-checkbox formControlName="{{ task.title }}" value="{{ task.title }}" inputId="{{ task.title }}"
+                  class="p-checkbox-icon p-circle p-checkbox-rounded" ></p-checkbox>
+                  <label class="ml-4" for="{{ task.title }}">{{ task.title }}</label>
+                </div>
+                <div class="p-row">
+                  <div id='task-description'(click)="toggleDescription(task)" class="ml-6 p-text-left pb-2">
+                    <span *ngIf="!showFullDescription[task.title]">
+                      {{ task.description.split('\n')[0] }}
+                      <span *ngIf="task.description.split('\n').length > 1">...</span>
+                    </span>
+                    <pre *ngIf="showFullDescription[task.title]">{{ task.description }}</pre>
+                  </div>
+                  <p-divider></p-divider>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  
+  </form>
+</div>
+
+
+<!-- 
+  Other versions of 'Description' toggle
+ -->
+<!-- <pre class="ml-6 p-text-left">{{ task.description }}</pre> -->
+<!-- <div class="ml-6 p-text-left pb-2">
+  {{ task.description.split('\n')[0] }}
+  <span *ngIf="task.description.split('\n').length > 1">...</span>
+</div> -->
+<!--  -->
+<!-- <div (click)="toggleDescription()" class="ml-6 p-text-left pb-2 description" [ngClass]="{'clickable': !showFullDescription}">
+  <span *ngIf="!showFullDescription">{{ task.description.split('\n')[0] }}
+    <span *ngIf="task.description.split('\n').length > 1">...</span>
+  </span>
+  <pre *ngIf="showFullDescription">{{ task.description }}</pre>
+</div> -->
+
+<p-checkbox _ngcontent-stl-c19="" class="p-element p-checkbox-icon p-circle p-checkbox-rounded ng-untouched ng-pristine ng-valid" ng-reflect-name="Do Sunday Chores" ng-reflect-value="Do Sunday Chores" ng-reflect-input-id="Do Sunday Chores">
+  <div ng-reflect-ng-class="[object Object]" class="p-checkbox p-component">
+    <div class="p-hidden-accessible">
+      <input type="checkbox" value="Do Sunday Chores" id="Do Sunday Chores" aria-checked="false">
+    </div>
+    <div class="p-checkbox-box" ng-reflect-ng-class="[object Object]">
+      <span class="p-checkbox-icon"></span>
+    </div>
+  </div>
+  <!--bindings={}-->
+</p-checkbox>

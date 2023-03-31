@@ -34,7 +34,7 @@ import { TasksComponent } from './tasks/tasks.component';
     AppComponent,
     TaskCreateComponent,
     TaskListComponent,
-    TasksComponent
+    TasksComponent,
   ],
   imports: [
     BrowserModule,

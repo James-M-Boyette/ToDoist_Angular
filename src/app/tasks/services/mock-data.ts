@@ -5,7 +5,7 @@ import { TaskList } from '../models/taskList.model';
 export const userTasks: TaskList = {
     "t0001": { 
       'title': 'Do Sunday Chores',
-      'description': '-Clean the stairs\n-Clean the bathroom\n-Clean the kitchen',
+      'description': '- Clean the stairs\n- Clean the bathroom\n- Clean the kitchen',
       'dueDate': new Date('2023-04-02'),
     },
     't0002': { 

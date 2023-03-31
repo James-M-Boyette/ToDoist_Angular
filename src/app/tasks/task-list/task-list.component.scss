@@ -1,0 +1,43 @@
+:host {
+  --task-font: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+}
+
+label {
+    font-family: var(--task-font);
+    font-size: 16px; 
+    font-weight: bold;
+  }
+  
+/* .p-checkbox-box.p-checkbox-rounded  */
+span.p-checkbox-icon:before {
+    border-radius: 50%;
+}
+
+.expanded, #task-description .ng-star-inserted {
+  // white-space: pre-wrap;
+  font-family: var(--task-font);
+  margin: 0px;
+}
+  
+  .p-checkbox-rounded .p-checkbox-box:before,
+.p-checkbox-rounded .p-checkbox-box:after {
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0.25em;
+  box-sizing: border-box;
+  border: 2px solid var(--text-color);
+}
+
+.p-checkbox-rounded .p-checkbox-box:before {
+  content: '';
+}
+
+.p-checkbox-rounded .p-checkbox-box:after {
+  content: '';
+  background-color: var(--text-color);
+}
+
+:host ::ng-deep .p-checkbox-rounded .p-checkbox-box {
+  border-radius: 50%;
+}
