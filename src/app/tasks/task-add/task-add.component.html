@@ -1,42 +1,6 @@
-<!-- <div id="task-title" class="p-row p-checkbox-circle pb-3 align-items-center">
-  <p-checkbox
-    formControlName="{{ task.title }}"
-    value="{{ task.title }}"
-    inputId="{{ task.title }}"
-    class="p-checkbox-icon p-circle p-checkbox-rounded"
-  ></p-checkbox>
-  <label class="ml-4" for="{{ task.title }}">{{ task.title }}</label>
-</div> -->
+<!-- Using PrimeNG 'Checkbox' -->
 
-<!-- <div
-  *ngIf="!showCreateComponent"
-  class="p-row p-checkbox-circle pb-3 align-items-center"
-> -->
-
-<!-- <div class="p-row p-checkbox-circle pb-3 align-items-center">
-  <p-checkbox
-    value="Add Task"
-    class="p-checkbox-icon p-circle p-checkbox-rounded"
-  ></p-checkbox>
-  <label class="ml-4" for="addTask">Add Task</label>
-</div> -->
-
-<!-- <div class="p-row p-checkbox-circle pb-3 align-items-center">
-  <p-checkbox
-    value="Add Task"
-    class="p-checkbox-icon p-circle p-checkbox-rounded"
-    pButton
-    (onClick)="onAddTaskButtonClick()"
-    buttonStyleClass="p-button-raised p-button-secondary"
-    label="Add Task"
-    [labelStyle]="{ cursor: 'pointer' }"
-    inputId="addTask"
-  ></p-checkbox>
-</div> -->
-
-<!--  -->
-
-<div class="surface-card w-full lg:w-6" style="margin: auto">
+<!-- <div class="surface-card w-full lg:w-6" style="margin: auto">
   <div class="p-grid p-nogutter">
     <div class="p-col">
       <div class="card">
@@ -58,4 +22,19 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="surface-card w-full lg:w-6" style="margin: auto">
+  <div class="p-grid">
+    <div class="p-col">
+        <div class="p-row">
+          <div id="task-add" class="align-items-center" style="margin-left: 1px;">
+            <span id="james-plus-icon" class="p-checkbox-icon pi pi-plus"></span>
+            <span class="ml-4 checkbox-label add-label">Add Task</span>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
+
+

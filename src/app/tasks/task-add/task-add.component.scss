@@ -9,19 +9,37 @@
   --user-input-gray: #454545;
 }
 
-:host ::ng-deep .checkbox-label {
+
+
+#task-add {
+  font-family: var(--task-font);
+}
+
+#task-add:hover,
+#task-add:hover .add-label {
+  color: var(--primary-blue-hover);
+  cursor:pointer;
+}
+
+
+#james-plus-icon {
+  border: 1px solid transparent; 
+  border-radius: 10px; 
+  color:var(--primary-blue); 
+  font-weight: bold;
+}
+
+.add-label {
   font-size: 16px;
   font-weight: bold;
   color: #333;
 }
 
-:host ::ng-deep .p-checkbox-rounded .p-checkbox-box {
-  border-radius: 50%;
+#task-add:hover #james-plus-icon {
+  background-color: var(--primary-blue-hover);
+  color: #fff;
 }
 
-#task-add {
-  font-family: var(--task-font);
-}
 
 /* Heirarchy of classes from parent to child elements
   .p-checkbox-icon
@@ -30,46 +48,91 @@
   span.p-checkbox-icon
 */
 
-// Make the initial checkbox a blue 'plus' icon
-:host ::ng-deep .p-checkbox .p-checkbox-icon:before {
-  color: var(--primary-blue);
-  font-family: "PrimeIcons";
-  font-size: 2rem;
-  font-weight: bold;
-  content: "\e902";
-  content: "\2b";
-  padding-right: .05rem;
-  position: relative;
-  top: -1px;
-}
 
-// Initially, make the checkbox
-:host ::ng-deep .p-checkbox .p-checkbox-box {
-  border: none;
-  background-color: transparent;
-}
+// :host ::ng-deep .checkbox-label {
+//   font-size: 16px;
+//   font-weight: bold;
+//   color: #333;
+// }
 
-// On hover, make the background blue
-:host ::ng-deep .p-checkbox:hover .p-checkbox-box {
-  background-color: var(--primary-blue-hover);
-}
+// :host ::ng-deep .p-checkbox-rounded .p-checkbox-box {
+//   border-radius: 50%;
+// }
 
-// On hover, show a white `pi-plus` icon
-:host ::ng-deep .p-checkbox:hover .p-checkbox-icon::before {
-  content: '';
-  font-family: "PrimeIcons";
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  content: "\2b";
-}
+// Style label + space in between on 'hover'
+// #task-add:hover {
+//   cursor:pointer;
+// }
+// #task-add:hover label {
+//   color: var(--primary-blue-hover);
+//   cursor:pointer;
+// }
 
-// Fixes 'animation' on hover, which I never want
-:host ::ng-deep .p-checkbox-checked.p-checkbox-focused .p-checkbox-box .p-checkbox-icon:before {
-  top: -.125em !important;
-}
+
+/* 
+   My Note
+*/
+
+// // Make the initial checkbox a blue 'plus' icon
+// :host ::ng-deep .p-checkbox .p-checkbox-icon:before {
+//   color: var(--primary-blue);
+//   font-family: "PrimeIcons";
+//   font-size: 2rem;
+//   font-weight: bold;
+//   content: "\e902";
+//   content: "\2b";
+//   padding-right: .05rem;
+//   position: relative;
+//   top: -1px;
+// }
+
+// // Initially, make the checkbox
+// :host ::ng-deep .p-checkbox .p-checkbox-box {
+//   border: none;
+//   background-color: transparent;
+// }
+
+// // On hover, make the background blue
+// :host ::ng-deep .p-checkbox:hover .p-checkbox-box {
+//   background-color: var(--primary-blue-hover);
+// }
+
+// // On hover, show a white `pi-plus` icon
+// :host ::ng-deep .p-checkbox:hover .p-checkbox-icon::before {
+//   content: '';
+//   font-family: "PrimeIcons";
+//   font-size: 2rem;
+//   font-weight: bold;
+//   color: #fff;
+//   content: "\2b";
+// }
+
+
+// // On hovering over either parent 'task-add' element or the label, re-style the icon (as if you're hovering over the icon itself)
+// :host ::ng-deep #task-add:hover + .p-checkbox .p-checkbox-box, 
+// :host ::ng-deep #task-add:hover label + .p-checkbox .p-checkbox-box {
+//   background-color: var(--primary-blue-hover);
+// }
+
+// :host ::ng-deep #task-add:hover + .p-checkbox .p-checkbox-icon::before, 
+// :host ::ng-deep #task-add:hover label + .p-checkbox .p-checkbox-icon::before {
+//   content: '';
+//   font-family: "PrimeIcons";
+//   font-size: 2rem;
+//   font-weight: bold;
+//   color: #fff;
+//   content: "\2b";
+// }
+
+
+// // Fixes 'animation' on hover, which I never want
+// :host ::ng-deep .p-checkbox-checked.p-checkbox-focused .p-checkbox-box .p-checkbox-icon:before {
+//   top: -.125em !important;
+// }
  
-// Stops 'animation' of cross moving down on click - could change if you want more user feedback on click
-:host ::ng-deep .p-checkbox-checked .p-checkbox-box.p-highlight .p-checkbox-icon:before {
-  top: -.125em !important;
-}
+// // Stops 'animation' of cross moving down on click - could change if you want more user feedback on click
+// :host ::ng-deep .p-checkbox-checked .p-checkbox-box.p-highlight .p-checkbox-icon:before {
+//   top: -.125em !important;
+// }
+
+

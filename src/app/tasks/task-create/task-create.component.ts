@@ -10,6 +10,7 @@ import { Task } from '../models/task.model';
 })
 export class TaskCreateComponent implements OnInit {
   taskForm!: FormGroup;
+  @Output() cancel = new EventEmitter<void>();
  
   getTitleCount(): number {
     return this.taskForm.get('title')?.value?.length
@@ -54,14 +55,12 @@ export class TaskCreateComponent implements OnInit {
     return !title || !title.trim();
   }
 
-  @Output() cancel = new EventEmitter<void>();
+  
 
   onCancel() {
     console.log(`CANCEL clicked!`);
     this.cancel.emit();
   }
-  
-  
 
   onSubmit(): void {
     console.log(`user's submission: `, this.taskForm);
