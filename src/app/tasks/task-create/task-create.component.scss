@@ -1,5 +1,5 @@
 @import "primeng/resources/primeng.css";
-@import '~primeng/resources/primeng.min.css';
+@import "~primeng/resources/primeng.min.css";
 
 /* 
    Variables
@@ -23,11 +23,12 @@
 .borderless-input {
   border-color: transparent;
   box-shadow: none;
-  outline: none
+  outline: none;
 }
 
 // Divider for second and third sections
-#primary-task-options, .primary-task-options {
+#primary-task-options,
+.primary-task-options {
   border-top: 1px solid var(--secondary);
 }
 
@@ -49,7 +50,10 @@
 }
 
 // Disable PrimeNG borders, box-shadows, and outlining for 'input' fields
-input#title, textarea#description, #user-projects, :host ::ng-deep p-dropdown .p-dropdown{
+input#title,
+textarea#description,
+#user-projects,
+:host ::ng-deep p-dropdown .p-dropdown {
   border-style: hidden !important;
   box-shadow: none !important;
   outline: none; // key for disabling
@@ -66,10 +70,10 @@ input#title, textarea#description, #user-projects, :host ::ng-deep p-dropdown .p
 
 // The label for the 'Description' field
 #task-description label {
-  font-size: small; 
-  // margin-left: 6px; 
-  margin-top: 2px; 
-  opacity: .75; 
+  font-size: small;
+  // margin-left: 6px;
+  margin-top: 2px;
+  opacity: 0.75;
   transition: opacity 0.7s ease-in-out;
   // color: red;
 }
@@ -84,19 +88,18 @@ input#title, textarea#description, #user-projects, :host ::ng-deep p-dropdown .p
   opacity: 0.2 !important;
 }
 
-
 /* 
   'Primary Options' button styling 
 */
 
 // 'Projects' dropdown container
-:host ::ng-deep  #projects-dropdown p-dropdown#user-projects .p-dropdown:hover {
-  background-color: transparent; 
+:host ::ng-deep #projects-dropdown p-dropdown#user-projects .p-dropdown:hover {
+  background-color: transparent;
   border-radius: 7px;
 }
 
 // 'Projects' dropdown
-:host ::ng-deep  #projects-dropdown:hover {
+:host ::ng-deep #projects-dropdown:hover {
   background-color: var(--secondary);
   border-radius: 7px;
   & span.p-dropdown-label {
@@ -124,16 +127,23 @@ button#add-task {
   }
   &:not([disabled]):hover {
     background: var(--primary-blue-hover);
-  };
+  }
 }
-
 
 /* 
   'Secondary Options' button styling 
 */
 
+:host ::ng-deep #secondary-task-options p-button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+:host ::ng-deep #secondary-task-options p-calendar button {
+  margin-right: 5px;
+}
+
 // Button Container
-:host ::ng-deep #secondary-task-options p-button:hover  {
+:host ::ng-deep #secondary-task-options p-button:hover {
   background: var(secondary-hover);
   border: 1px solid transparent !important;
   outline: none;
@@ -147,7 +157,7 @@ button#add-task {
 // Button
 :host ::ng-deep #secondary-task-options p-button button {
   font-size: 12px !important;
-  padding: .3rem .3rem !important;
+  padding: 0.3rem 0.3rem !important;
   border: 1px solid var(--medium-gray);
   border-radius: 5px;
   outline: none;
@@ -158,22 +168,48 @@ button#add-task {
 }
 
 // Button Text
-:host ::ng-deep p-button.secondary-options-button button span.p-button-label{
+:host ::ng-deep p-button.secondary-options-button button span.p-button-label {
   font-size: 12px !important;
   color: var(--medium-gray);
   padding: 0.01rem 0.01rem !important;
-  margin-right: .2rem;
+  margin-right: 0.2rem;
 }
 // Button Icon
-:host ::ng-deep p-button.secondary-options-button button span.pi{
+:host ::ng-deep p-button.secondary-options-button button span.pi {
   color: var(--dark-gray);
-  margin-left: .2rem;
+  margin-left: 0.2rem;
 }
 
 /* 
   User Notification that form Needs Attention 
 */
-.needs-user-attention, input.ng-invalid.ng-dirty {
+.needs-user-attention,
+input.ng-invalid.ng-dirty {
   border: 2px solid #ffa500 !important;
-  box-shadow: 0 0 0 0.1rem  #fdb42cb1;
+  box-shadow: 0 0 0 0.1rem #fdb42cb1;
+}
+
+:host ::ng-deep p-calendar {
+  width: 175px;
+  font-size: 12px !important;
+}
+
+:host ::ng-deep p-calendar .p-inputtext {
+  font-size: 12px !important;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid var(--medium-gray) !important;
+  // x-offset, y-offset, blur, spread, color
+  box-shadow: 3px 3px 3px -2px var(--medium-gray) !important;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+:host ::ng-deep p-calendar button {
+  border: 1px solid #097cd4 !important;
+  height: 30px;
+  line-height: 30px;
+  box-shadow: -3px 3.25px 3px -2px var(--medium-gray) !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }

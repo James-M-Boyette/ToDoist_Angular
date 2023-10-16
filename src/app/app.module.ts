@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 // PrimeNG Imports
 import { StyleClassModule } from 'primeng/styleclass';
@@ -40,10 +41,11 @@ import { TaskService } from './tasks/services/task.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     StyleClassModule,
     InputTextModule,
     InputTextareaModule,
@@ -58,9 +60,9 @@ import { TaskService } from './tasks/services/task.service';
     CardModule,
     RippleModule,
     DividerModule,
-    DataViewModule, 
+    DataViewModule,
   ],
-  providers: [TaskService],
-  bootstrap: [AppComponent]
+  providers: [TaskService, HttpClientModule],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

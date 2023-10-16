@@ -1,47 +1,20 @@
-// import { Component, OnInit, ViewChild } from '@angular/core';
-// import { TaskCreateComponent } from './task-create/task-create.component';
-
-// @Component({
-//   selector: 'app-tasks',
-//   templateUrl: './tasks.component.html',
-//   styleUrls: ['./tasks.component.scss']
-// })
-// export class TasksComponent implements OnInit {
-//   @ViewChild(TaskCreateComponent) taskCreateComponent!: TaskCreateComponent;
-//   taskCreateVisible = false
-//   taskAddVisible = true
-
-//   ngOnInit() {
-//     // this.taskCreateComponent.cancel.subscribe(() => {
-//     //   this.toggleTaskAddVisibility();
-//     // });
-//   }
-
-//   ngAfterViewInit() {
-//     this.taskCreateComponent.cancel.subscribe(() => {
-//       this.toggleTaskAddVisibility();
-//     });
-//   }
-
-//   toggleTaskAddVisibility() {
-//     this.taskCreateVisible = !this.taskCreateVisible
-//     this.taskAddVisible = !this.taskAddVisible
-//   }
-
-//   onCancel() {
-//     console.log(`onCancel was run`);
-//     this.toggleTaskAddVisibility();
-//   }
-  
-// }
-
-import { OnInit, AfterViewInit, Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import {
+  OnInit,
+  AfterViewInit,
+  Component,
+  ViewChild,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
 import { TaskCreateComponent } from './task-create/task-create.component';
+import { TaskService } from './services/task.service'; // Import your service here
+import { Task } from './models/task.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss']
+  styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent implements OnInit, AfterViewInit {
   // @ViewChildren(TaskCreateComponent) taskCreateComponents!: QueryList<TaskCreateComponent>;
@@ -49,9 +22,15 @@ export class TasksComponent implements OnInit, AfterViewInit {
   taskCreateVisible = false;
   taskAddVisible = true;
 
-  
+  tasks: Task[] = [];
+
+  taskSubscription: Subscription = new Subscription();
+
   ngOnInit() {
-    // Had to wrap this in a conditional to satisfy TypeScript, which kept complaining that 'cancel' was undefined
+    this.taskSubscription = this.taskService.tasks$.subscribe((tasks) => {
+      this.tasks = tasks;
+    });
+
     if (this.taskCreateComponent) {
       this.taskCreateComponent.cancel.subscribe(() => {
         console.log(`toggleTaskAddVisibility() was run`);
@@ -60,13 +39,15 @@ export class TasksComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-     // this.taskCreateComponents.forEach(component => {
-    //   component.cancel.subscribe(() => {
-          // this.onCancel();
-    //     this.toggleTaskAddVisibility();
-    //   });
-    // });
+  constructor(private taskService: TaskService) {}
+
+  ngAfterViewInit() {}
+
+  fetchTasks() {
+    this.taskService.getTasks().subscribe(
+      (data) => (this.tasks = data),
+      (error) => console.error(error)
+    );
   }
 
   toggleTaskAddVisibility() {
@@ -77,5 +58,13 @@ export class TasksComponent implements OnInit, AfterViewInit {
   onCancel() {
     console.log(`onCancel was run`);
     this.toggleTaskAddVisibility();
+  }
+
+  taskClicked = false;
+  selectedTask!: Task;
+
+  onTaskClicked(task: Task) {
+    this.taskClicked = true;
+    this.selectedTask = task;
   }
 }

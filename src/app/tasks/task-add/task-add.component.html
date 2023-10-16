@@ -1,40 +1,16 @@
-<!-- Using PrimeNG 'Checkbox' -->
-
-<!-- <div class="surface-card w-full lg:w-6" style="margin: auto">
-  <div class="p-grid p-nogutter">
+<!-- This is the '+ Add Task' button. 
+  It is hidden when the user clicks it, and reveals the `task-create.component`. 
+  When the user either saves a new task, or 'cancels', this '+ Add Task' element is shown once again 
+-->
+<section class="surface-card w-full lg:w-6" style="margin: auto">
+  <div class="p-grid">
     <div class="p-col">
-      <div class="card">
-        <div class="p-grid">
-          <div class="p-col">
-            <div
-              id="task-add"
-              class="p-row p-checkbox-circle pb-3 align-items-center"
-              (onClick)="onAddTaskButtonClick()"
-            >
-              <p-checkbox
-                value="Add Task"
-                class="p-checkbox-icon p-circle p-checkbox-rounded"
-              ></p-checkbox>
-              <label class="ml-4 checkbox-label" for="addTask">Add Task</label>
-            </div>
-          </div>
+      <div class="p-row">
+        <div id="task-add" class="align-items-center" style="margin-left: 1px">
+          <span id="james-plus-icon" class="p-checkbox-icon pi pi-plus"></span>
+          <span class="ml-4 checkbox-label add-label">Add Task</span>
         </div>
       </div>
     </div>
   </div>
-</div> -->
-
-<div class="surface-card w-full lg:w-6" style="margin: auto">
-  <div class="p-grid">
-    <div class="p-col">
-        <div class="p-row">
-          <div id="task-add" class="align-items-center" style="margin-left: 1px;">
-            <span id="james-plus-icon" class="p-checkbox-icon pi pi-plus"></span>
-            <span class="ml-4 checkbox-label add-label">Add Task</span>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-
-
+</section>

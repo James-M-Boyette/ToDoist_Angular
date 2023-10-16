@@ -1,42 +1,21 @@
-<div class="flex flex-column justify-content-center">
-  <div class="flex">
+<main class="flex flex-column justify-content-center">
+  <section class="flex">
     <div class="flex-auto">
       <app-task-list>The List of Tasks Loads here ...</app-task-list>
     </div>
-  </div>
-  <div class="flex">
+  </section>
+  <section class="flex">
     <div class="flex-auto" *ngIf="taskAddVisible">
-      <app-task-add  (click)="toggleTaskAddVisibility()">The Task Add Component Loads here ...</app-task-add>
-    </div>
-  </div>
-  <div class="flex">
-    <div class="flex-auto" *ngIf="taskCreateVisible">
-      <app-task-create (cancel)="onCancel()">The Task Entry Component Loads here ...</app-task-create>
-    </div>
-  </div>
-</div>
-<!-- <div class="flex flex-column justify-content-center">
-  <div class="flex">
-    <div class="flex-auto">
-      <app-task-list>The List of Tasks Loads here ...</app-task-list>
-    </div>
-  </div>
-  <div class="flex">
-    <div class="flex-auto">
-      <app-task-create *ngIf="showCreateComponent"></app-task-create>
-      <div
-        *ngIf="!showCreateComponent"
-        class="p-row p-checkbox-circle pb-3 align-items-center"
+      <app-task-add (click)="toggleTaskAddVisibility()"
+        >The Task Add Component Loads here ...</app-task-add
       >
-        <p-checkbox
-          value="Add Task"
-          class="p-checkbox-icon p-circle p-checkbox-rounded"
-        ></p-checkbox>
-        <label class="ml-4" for="addTask">Add Task</label>
-      </div>
     </div>
-  </div>
-</div> -->
-
-<!-- <task-add (click)="toggleTaskAddVisibility()"></task-add>
-<task-create *ngIf="taskCreateVisible"></task-create> -->
+  </section>
+  <section class="flex">
+    <div class="flex-auto" *ngIf="taskCreateVisible">
+      <app-task-create (cancel)="onCancel()"
+        >The Task Entry Component Loads here ...</app-task-create
+      >
+    </div>
+  </section>
+</main>

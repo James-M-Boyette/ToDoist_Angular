@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { throwError } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.service';
@@ -8,46 +8,92 @@ import { TaskService } from '../services/task.service';
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  styleUrls: ['./task-list.component.scss'],
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
   taskForm!: FormGroup;
-  // showFullDescription = false;
   showFullDescription: { [key: string]: boolean } = {};
+
+  private taskSubscription!: Subscription;
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
+    // Initialize with an empty FormGroup
     this.taskForm = new FormGroup({});
-    this.tasks.forEach((task) => {
-      const control = new FormControl(false);
-      this.taskForm.addControl(task.title, control);
+
+    // Subscribe to the task list
+    this.taskSubscription = this.taskService.tasks$.subscribe((tasks) => {
+      this.tasks = tasks;
+      this.initTaskForm(this.tasks);
     });
   }
 
-  // toggleDescription(): void {
-  //   this.showFullDescription = !this.showFullDescription;
-  // }
+  private initTaskForm(tasks: Task[]): void {
+    const controls: { [key: string]: FormControl } = {};
+
+    tasks.forEach((task) => {
+      controls[task.title] = new FormControl(false);
+    });
+
+    this.taskForm = new FormGroup(controls);
+  }
+
   toggleDescription(task: Task) {
-    this.showFullDescription[task.title] = !this.showFullDescription[task.title];
+    this.showFullDescription[task.title] =
+      !this.showFullDescription[task.title];
+  }
+
+  private fetchTasks(): void {
+    this.taskSubscription = this.taskService.getTasks().subscribe(
+      (tasks: Task[]) => {
+        this.tasks = tasks;
+        this.initTaskForm(this.tasks);
+      },
+      (error) => {
+        console.error('Error fetching tasks:', error);
+      }
+    );
+  }
+
+  addNewTask(newTask: Task): void {
+    this.taskService.addNewTask(newTask).subscribe({
+      next: () => {},
+      error: (error) => {
+        console.error('Error adding new task:', error);
+      },
+    });
   }
 
   deleteSelectedTasks(): void {
-    const selectedTasks = Object.keys(this.taskForm.value)
-      .filter((taskTitle) => this.taskForm.value[taskTitle])
-      .map((taskTitle) => this.tasks.find((task) => task.title === taskTitle));
-  
-    selectedTasks.forEach((task) => {
-      if (task) {
-        this.taskService.deleteTask(task);
-      } else {
-        throw new Error('No task was found');
+    const selectedTasksTitles = Object.keys(this.taskForm.value).filter(
+      (taskTitle) => this.taskForm.value[taskTitle]
+    );
+
+    selectedTasksTitles.forEach((taskTitle) => {
+      const task = this.tasks.find((t) => t.title === taskTitle);
+      if (task && task.taskId) {
+        this.taskService.deleteTask(task.taskId).subscribe(
+          () => {
+            // Handle successful deletion
+          },
+          (error) => {
+            // Handle error
+          }
+        );
       }
     });
-  
-    this.tasks = this.taskService.getTasks();
+
+    // Refresh task list
+    this.taskService.getTasks().subscribe((tasks) => {
+      this.tasks = tasks;
+    });
     this.taskForm.reset();
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe to prevent memory leaks
+    this.taskSubscription.unsubscribe();
   }
 }

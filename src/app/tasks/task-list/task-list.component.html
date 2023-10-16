@@ -1,24 +1,47 @@
-
-<div id='form-wrapper' class="surface-card w-full lg:w-6" style="margin:auto !important">
+<!-- This lists current, incomplete tasks. 
+  When a user creates and adds a new task, it will appear here.
+ -->
+<section
+  id="form-wrapper"
+  class="surface-card w-full lg:w-6"
+  style="margin: auto !important"
+>
   <form [formGroup]="taskForm">
     <div class="p-grid p-nogutter">
-      <div class="p-col">
+      <article class="p-col">
         <div *ngFor="let task of tasks" class="pt-2">
           <div class="card">
             <div class="p-grid">
               <div class="p-col">
-                <div id='task-title' class="p-row p-checkbox-circle pb-3 align-items-center">
-                  <p-checkbox formControlName="{{ task.title }}" value="{{ task.title }}" inputId="{{ task.title }}"
-                  class="p-checkbox-icon p-circle p-checkbox-rounded" ></p-checkbox>
-                  <label class="ml-4" for="{{ task.title }}">{{ task.title }}</label>
+                <div
+                  id="task-title"
+                  class="p-row p-checkbox-circle pb-3 align-items-center"
+                >
+                  <p-checkbox
+                    formControlName="{{ task.title }}"
+                    value="{{ task.title }}"
+                    inputId="{{ task.title }}"
+                    class="p-checkbox-icon p-circle p-checkbox-rounded"
+                  ></p-checkbox>
+                  <label class="ml-4" for="{{ task.title }}">{{
+                    task.title
+                  }}</label>
                 </div>
                 <div class="p-row">
-                  <div id='task-description'(click)="toggleDescription(task)" class="ml-6 p-text-left pb-2">
+                  <div
+                    id="task-description"
+                    (click)="toggleDescription(task)"
+                    class="ml-6 p-text-left pb-2"
+                  >
                     <span *ngIf="!showFullDescription[task.title]">
-                      {{ task.description.split('\n')[0] }}
-                      <span *ngIf="task.description.split('\n').length > 1">...</span>
+                      {{ task.description.split("\n")[0] }}
+                      <span *ngIf="task.description.split('\n').length > 1"
+                        >...</span
+                      >
                     </span>
-                    <pre *ngIf="showFullDescription[task.title]">{{ task.description }}</pre>
+                    <pre *ngIf="showFullDescription[task.title]">{{
+                      task.description
+                    }}</pre>
                   </div>
                   <p-divider></p-divider>
                 </div>
@@ -26,24 +49,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </div>
   </form>
-</div>
-
-
-<!-- 
-  Other versions of 'Description' toggle
- -->
-<!-- <pre class="ml-6 p-text-left">{{ task.description }}</pre> -->
-<!-- <div class="ml-6 p-text-left pb-2">
-  {{ task.description.split('\n')[0] }}
-  <span *ngIf="task.description.split('\n').length > 1">...</span>
-</div> -->
-<!--  -->
-<!-- <div (click)="toggleDescription()" class="ml-6 p-text-left pb-2 description" [ngClass]="{'clickable': !showFullDescription}">
-  <span *ngIf="!showFullDescription">{{ task.description.split('\n')[0] }}
-    <span *ngIf="task.description.split('\n').length > 1">...</span>
-  </span>
-  <pre *ngIf="showFullDescription">{{ task.description }}</pre>
-</div> -->
+</section>
