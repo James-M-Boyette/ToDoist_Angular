@@ -20,7 +20,8 @@
                   <p-checkbox
                     formControlName="{{ task.title }}"
                     value="{{ task.title }}"
-                    inputId="{{ task.title }}"
+                    inputId="{{ task.taskId }}"
+                    (onChange)="toggleTaskCompletion(task)"
                     class="p-checkbox-icon p-circle p-checkbox-rounded"
                   ></p-checkbox>
                   <label class="ml-4" for="{{ task.title }}">{{

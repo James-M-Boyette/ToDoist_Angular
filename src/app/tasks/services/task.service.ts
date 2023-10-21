@@ -50,6 +50,26 @@ export class TaskService {
     return this.http.put<Task>(`${this.apiURL}/${id}`, task);
   }
 
+  updateTaskCompleted(taskId: string, completed: boolean): Observable<Task> {
+    // Log the information
+    console.log(
+      'Completing Task: ',
+      taskId,
+      ' with completed: ',
+      completed,
+      ' in task.service.ts'
+    );
+
+    console.log(`Payload: ${JSON.stringify({ completed })}`);
+
+    console.log(`Sending PATCH request to ${this.apiURL}/${taskId}/completed`);
+
+    // Make an HTTP request to update the task status in the database
+    return this.http.patch<Task>(`${this.apiURL}/${taskId}/completed`, {
+      completed,
+    });
+  }
+
   deleteTask(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiURL}/${id}`);
   }

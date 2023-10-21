@@ -92,6 +92,25 @@ export class TaskListComponent implements OnInit, OnDestroy {
     this.taskForm.reset();
   }
 
+  toggleTaskCompletion(task: Task) {
+    if (!task.taskId) {
+      console.error('Task ID is undefined.');
+      return;
+    }
+
+    task.completed = !task.completed;
+    this.taskService
+      .updateTaskCompleted(task.taskId, task.completed)
+      .subscribe({
+        next: () => {
+          // Refresh the task list or update the UI as needed
+        },
+        error: (error) => {
+          console.error('An error occurred:', error);
+        },
+      });
+  }
+
   ngOnDestroy(): void {
     // Unsubscribe to prevent memory leaks
     this.taskSubscription.unsubscribe();
